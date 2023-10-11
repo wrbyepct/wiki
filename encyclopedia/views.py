@@ -9,16 +9,28 @@ def index(request):
     })
 
 def render_entry(request, entry_title):
-    
-    entries = [entry.lower() for entry in util.list_entries()]
-    
-    # Handle entry exists or not
-    if entry_title.lower() in entries:
-        content_md = util.get_entry(title=entry_title)
-        return render(request, "encyclopedia/entry.html",
-                  {"entry_title": entry_title, "content": content_md})
+    if request.method == "POST":
+        # If delete button is clicked, delete it 
+        if "delete" in request.POST:
+            entry_to_delelte = request.POST.get("delete")
+            util.delete_entry(entry_to_delelte)
+            return redirect("index")
+        else:
+            to_edit = request.POST.get("edit")
+            
+            print(f"To edit is pressed: {to_edit}")
+            return redirect("index")
+
     else:
-        return render(request, "encyclopedia/page_not_found.html")
+        entries = [entry.lower() for entry in util.list_entries()]
+        
+        # Handle entry exists or not
+        if entry_title.lower() in entries:
+            content_md = util.get_entry(title=entry_title)
+            return render(request, "encyclopedia/entry.html",
+                    {"entry_title": entry_title, "content": content_md})
+        else:
+            return render(request, "encyclopedia/page_not_found.html")
     
 def render_results(request):
     # if request.method == 'POST':
@@ -44,7 +56,7 @@ def render_new_page(request):
         content = data.get("content")
         
         # Save to Mardown file
-        util.save_new_page(title=title, content=content)
+        util.save_new_entry(title=title, content=content)
         messages.success(request, 'Your changes were saved.')
         return redirect("/newpage")
     return render(request, "encyclopedia/new_page.html")

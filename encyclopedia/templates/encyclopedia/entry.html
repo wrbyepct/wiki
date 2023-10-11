@@ -6,5 +6,12 @@
 {% endblock %}
 
 {% block body %}
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <button name="edit" value="{{ entry_title }}">Edit Page</button>
+            <button id="deleteEntry" name="delete" value="{{ entry_title }}">Delete Page</button>
+        </form>
+    </div>
     {{ content|markdown_to_html|safe }}
 {% endblock %}

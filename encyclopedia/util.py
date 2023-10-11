@@ -1,4 +1,5 @@
 import re
+import os
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
@@ -43,10 +44,13 @@ def filter_substr(str_list, substr):
     return [string for string in str_list if substr.lower() in string.lower()]
 
 
-def save_new_page(title, content):
+def save_new_entry(title, content):
     content_md = f"""# {title}
     
 {content}
 """     
     with open(f"entries/{title}.md", "w", encoding="utf-8") as f:
         f.write(content_md)
+
+def delete_entry(entry):
+    os.remove(f"entries/{entry}.md")
