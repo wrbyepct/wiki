@@ -29,29 +29,39 @@ def save_entry(title, content):
     default_storage.save(filename, ContentFile(content))
 
 
-def get_entry(title):
+def handle_file_error(func):
+    def wrapper(title, include_title=True):
+        try:
+            with open(f"entries/{title}.md", "r", encoding='utf-8') as f:
+                return func(f, include_title)
+        except (FileExistsError, FileNotFoundError):
+            return None
+    return wrapper
+
+
+@handle_file_error
+def get_entry(f, include_title):
     """
     Retrieves an encyclopedia entry by its title. If no such
     entry exists, the function returns None.
-    """
-    try:
-        f = default_storage.open(f"entries/{title}.md")
-        return f.read().decode("utf-8")
-    except FileNotFoundError:
-        return None
     
-def get_entry_without_title(title):
-    with open(f"entries/{title}.md", "r", encoding="utf-8") as f:
+    If include_title is False => skip the first 2 lines of content
+    """
+    if not include_title:
         next(f)
         next(f)
-        return f.read()
-
+    return f.read()
+    
 
 def filter_substr(str_list, substr):
+    """Given a list and a string, return any element that contains the string as substring, case insensitive
+    
+    """
     return [string for string in str_list if substr.lower() in string.lower()]
 
 
 def save_entry(title, content):
+    """Save the title and content as a new entry"""
     content_md = f"""# {title}
     
 {content}
@@ -76,4 +86,5 @@ def save_edit(original_title, new_title, content):
     save_entry(title=new_title, content=content)
 
 def delete_entry(entry):
+    """Directly remove the entry"""
     os.remove(f"entries/{entry}.md")

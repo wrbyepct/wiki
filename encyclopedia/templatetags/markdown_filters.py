@@ -1,5 +1,5 @@
 from django import template
-from markdown import markdown
+from markdown2 import markdown
 
 register = template.Library()
 
@@ -8,4 +8,4 @@ register = template.Library()
 
 @register.filter
 def markdown_to_html(value):
-    return markdown(value, extensions=['nl2br'])
+    return markdown(value, extras=["break-on-newline"])
