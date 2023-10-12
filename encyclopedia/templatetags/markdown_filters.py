@@ -8,4 +8,4 @@ register = template.Library()
 
 @register.filter
 def markdown_to_html(value):
-    return markdown(value)
+    return markdown(value, extensions=['nl2br'])

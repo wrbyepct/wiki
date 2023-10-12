@@ -1,3 +1,3 @@
 # Zoro
     
-3 swords style don't know anything about [Python](/wiki/Python).
+a person with mosshead wields 3 swords style and doesn't know anything about [Python](/wiki/Python).

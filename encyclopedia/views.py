@@ -70,6 +70,7 @@ def render_new_page(request):
             # Extract newly created entry data
             title = entry_form.cleaned_data["title"]
             content = entry_form.cleaned_data["content"]
+            print(content)
             
             # Check for existing entries
             entries = [entry.lower() for entry in util.list_entries()]
@@ -81,11 +82,10 @@ def render_new_page(request):
                               {"form": entry_form})
                         
             # If not existed, save to Mardown file
-            # And redirect to edit page
+            # And redirect to entry page
             util.save_entry(title=title, content=content)
-            messages.success(request, 'Your changes were saved.')
-            edit_url = reverse("edit") + f"?title={title}"
-            return redirect(edit_url)
+            messages.success(request, 'New entry saved!')
+            return redirect(f"wiki/{title}")
         else:
             return HttpResponse(f"Form is invalid: {entry_form.errors}")
     else:
@@ -119,7 +119,7 @@ def render_edit(request):
                            content=content)
             
             # Redirect to the entry page 
-            messages.success(request, 'Your changes were saved.')
+            messages.success(request, 'Your changes have been saved.')
             return redirect(f"wiki/{new_title}")
         else:
             return HttpResponse(f"Form is invalid: {entry_form.errors}")
