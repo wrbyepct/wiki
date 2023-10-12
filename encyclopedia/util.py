@@ -39,18 +39,41 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+    
+def get_entry_without_title(title):
+    with open(f"entries/{title}.md", "r", encoding="utf-8") as f:
+        next(f)
+        next(f)
+        return f.read()
+
 
 def filter_substr(str_list, substr):
     return [string for string in str_list if substr.lower() in string.lower()]
 
 
-def save_new_entry(title, content):
+def save_entry(title, content):
     content_md = f"""# {title}
     
 {content}
 """     
     with open(f"entries/{title}.md", "w", encoding="utf-8") as f:
         f.write(content_md)
+
+
+def save_edit(original_title, new_title, content):
+    """Handle edit entry 
+    
+    1. If it's with new title, delete the old one and create the new one.
+    2. If the titles are the same, then directly overwrite it.
+    """
+    
+    # If the title has changed
+    # Delete the old one and create the new one
+    if new_title != original_title:
+        delete_entry(original_title)
+        
+    # Afte that, create the new one or overwrite the content
+    save_entry(title=new_title, content=content)
 
 def delete_entry(entry):
     os.remove(f"entries/{entry}.md")

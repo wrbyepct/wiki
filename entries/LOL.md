@@ -1,3 +1,0 @@
-# LOL
-
-League of Lengend

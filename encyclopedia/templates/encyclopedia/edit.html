@@ -1,9 +1,8 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    Create New Page
+    Edit
 {% endblock %}
-
 
 {% block body %}
     {% if messages %}
@@ -17,6 +16,6 @@
     <form  method="post">
         {% csrf_token %}
         {{ form }}
-        <button type="submit">Create Entry</button>
+        <button type="submit" name="original_title" value="{{ title }}">Save Changes</button>
     </form>
 {% endblock %}
