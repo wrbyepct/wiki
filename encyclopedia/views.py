@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from . import util
+import random
 
 
 class EntryForm(forms.Form):
@@ -135,3 +136,8 @@ def render_edit(request):
                     {"form": entry_form, "title": title} )
     else:
         return render(request, "encyclopedia/page_not_found.html")
+    
+def render_random(request):
+    entries = util.list_entries()
+    random_entry = random.choice(entries)
+    return redirect(f"wiki/{random_entry}")
