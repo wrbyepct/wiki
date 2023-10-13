@@ -21,5 +21,8 @@
             <button id="deleteEntry" name="delete" value="{{ entry_title }}">Delete Page</button>
         </form>
     </div>
-    {{ content|markdown_to_html|safe }}
+    <div class="entry-body-container">
+        {{ content|markdown_to_html|safe }}
+    </div>
+    
 {% endblock %}
