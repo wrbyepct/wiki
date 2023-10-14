@@ -6,23 +6,23 @@
 {% endblock %}
 
 {% block body %}
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
     
-    <div>
-        <form method="post">
-            {% csrf_token %}
-            <button name="edit" value="{{ entry_title }}">Edit Page</button>
-            <button id="deleteEntry" name="delete" value="{{ entry_title }}">Delete Page</button>
-        </form>
+    <div class="entry-container" >
+
+        <div class="entry-btn-container">
+            <form method="post">
+                {% csrf_token %}
+                <button class="form-btn form-btn--normal" name="edit">Edit</button>
+                <button class="form-btn form-btn--danger" id="deleteEntry" name="delete">Delete</button>
+            </form>    
+        </div>
+        
+        <div class="entry-body-container">
+            {{ content|markdown_to_html|safe }}
+        </div>
+
     </div>
-    <div class="entry-body-container">
-        {{ content|markdown_to_html|safe }}
-    </div>
+   
+
     
 {% endblock %}

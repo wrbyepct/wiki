@@ -5,15 +5,19 @@
 {% endblock %}
 
 {% block body %}
+    
     <h1>Results</h1>
 
-    <ul>
+    <ul class="entry-list-container">
         {% if results %}
             {% for entry in results %}
-                <a class="entry-title" href="{% url 'entry' entry_title=entry %}">{{ entry }}</a>
+                <li class="entry-title" aria-label="transition-btn">
+                    <a class="entry-title" href="{% url 'entry' entry_title=entry %}">{{ entry }}</a>
+                </li>
             {% endfor %}
         {% else %}
-            <div>No entry found.</div>
+            <div class="no-results-message">No entry found.</div>
         {% endif %}
     </ul>
+    
 {% endblock %}

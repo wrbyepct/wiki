@@ -6,17 +6,26 @@
 
 
 {% block body %}
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 
-    <form  method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Create Entry</button>
-    </form>
+    
+    <div class="form-container">
+        <form class="entry-form" method="post">
+            {% csrf_token %}
+            
+            <div class="field field__title">
+                {{ form.title }}
+            </div>
+
+            <div class="field field__content">
+                {{ form.content }}
+            </div>
+            
+            <div class="btn-container">
+                <button class="form-btn form-btn--normal" type="submit">Create Entry</button>
+            </div>
+            
+        </form>
+    </div>
+    
+    
 {% endblock %}

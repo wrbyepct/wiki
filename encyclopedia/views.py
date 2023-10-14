@@ -8,6 +8,8 @@ from .request_handlers import (
     RandomPageRequestHandler
 )
 from .form import EntryForm
+from django.shortcuts import render 
+from .constant import ERROR_TEMPLATE
 
 def index(request):
     handler = IndexRequestHandler()
@@ -66,7 +68,7 @@ def render_new_page(request):
     return handler.handle_post(request, EntryForm(request.POST))
 
         
-def render_edit(request):
+def render_edit(request, entry_title):
     """Handle edit page rendering:
     1. POST - Collect the submitted data, put them into form and check if it's valid
         1. If valid => 
@@ -82,8 +84,7 @@ def render_edit(request):
     """
     handler = EditRequestHandler()
     if request.method == "GET":
-        entry = request.GET.get("title", None)
-        return handler.handle_get(request, entry)
+        return handler.handle_get(request, entry_title)
     
     form = EntryForm(request.POST)
     return handler.handle_post(request, form)
@@ -93,3 +94,11 @@ def render_random(request):
     """Random direct user to an existing entry page"""
     handler = RandomPageRequestHandler()
     return handler.handle_get(request)
+
+
+def render_foobar(request, foo, bar):
+    print(foo)
+    print(bar)
+    print(request.GET)
+    return render(request, ERROR_TEMPLATE, 
+                  {"status_code": 777, "message": "glad you found it"})

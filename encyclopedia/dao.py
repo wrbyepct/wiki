@@ -26,8 +26,8 @@ class EntryDao(DataDao):
         return util.list_entries()
     
     @staticmethod
-    def fetch_entry(entry):
-        return util.get_entry(entry)
+    def fetch_entry(entry, include_title: bool):
+        return util.get_entry(entry, include_title)
     
     @staticmethod
     def save_entry(entry, content):

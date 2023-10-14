@@ -7,7 +7,6 @@ from django.shortcuts import render, redirect
 import random
 from abc import ABC, abstractmethod
 
-from . import util
 from .constant import *
 from .form import EntryForm
 from .service import EntryService
@@ -59,18 +58,21 @@ class EntryRequestHandler(GeneralRequestHandler):
         return render(
             request, 
             ENTRY_TEMPLATE,
-            {"entry_title": entry_title, "content": content_md})
+            {"content": content_md})
         
    
     def handle_post(self, request, entry_title):
+        
+        original_entry_name = self.entry_service.get_original_entry_name(entry_title)
+        
         # If delete button is clicked, delete it 
         if "delete" in request.POST:
-            self.entry_service.delete_entry(entry_title)
+            self.entry_service.delete_entry(original_entry_name)
+            messages.success(request, "The entry was successfully deleted.")
             return redirect("index")
         
         # If "edit" is clicked, redirect to the corresponding page
-        edit_url = reverse("edit") + f"?title={entry_title}"
-        return redirect(edit_url)
+        return redirect(reverse("edit", args=[original_entry_name]))
         
         
 class ResultRequestHandler(GetRequestHandler):
@@ -113,7 +115,7 @@ class NewPageRequestHandler(GeneralRequestHandler):
         content = form.cleaned_data["content"]
         
         if self.entry_service.entry_exists(title):
-            messages.error(request, 'This entry has already existed')
+            messages.error(request, 'WARNING: This entry has already existed!')
             return render(request, 
                             NEW_PAGE_TEMPLATE, 
                             {"form": form})
@@ -129,14 +131,14 @@ class NewPageRequestHandler(GeneralRequestHandler):
 class EditRequestHandler(GeneralRequestHandler):
         
     def handle_get(self, request, entry):
-        content, status_code =  self.entry_service.get_entry_content(entry)
+        content, status_code =  self.entry_service.get_entry_content(entry=entry, include_title=False)
         
         if status_code == 404:
             return render(
                 request, 
                 ERROR_TEMPLATE,
                 {"status_code": status_code,
-                 "message": "You must specify the existing entry to edit. \n Example: /edit?title=ENTRY_NAME."}) 
+                 "message": "You must specify an existing entry to edit. \n Example: /edit/ENTRY_NAME."}) 
         
         # Then check there is no problem when reading entry content
         if status_code == 505:

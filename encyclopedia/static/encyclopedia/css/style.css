@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: red;
+  background-color: white;
 }
 
 code {
@@ -19,6 +19,7 @@ textarea {
 
 .main {
   padding: 10px;
+  margin-left: 1rem;
 }
 
 .search {
@@ -35,9 +36,4 @@ textarea {
 
 .sidebar h2 {
   margin-top: 5px;
-}
-
-/* Style for entry.html */
-.entry-title {
-  display: block;
 }/*# sourceMappingURL=style.css.map */

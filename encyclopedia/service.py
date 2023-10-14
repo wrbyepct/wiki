@@ -17,19 +17,15 @@ class EntryService:
         
         return entries
     
-    def entry_exists(self, entry):
-        entries = self.list_all_entries()
-        entries_lower = [entry.lower() for entry in entries]
-        return entry.lower() in entries_lower
     
-    
-    def get_entry_content(self, entry):
+    def get_entry_content(self, entry, include_title=True):
+        
         entries = [entry.lower() for entry in self.list_all_entries()]
         
         if entry.lower() not in entries:
             return None, 404
         
-        content = self.dao.fetch_entry(entry)
+        content = self.dao.fetch_entry(entry, include_title)
         
         if content is None:
             return None, 505
@@ -46,3 +42,20 @@ class EntryService:
     
     def delete_entry(self, entry):
         self.dao.delete_entry(entry)
+        
+        
+    def entry_exists(self, entry):
+        entries = self.list_all_entries()
+        entries_lower = [entry.lower() for entry in entries]
+        return entry.lower() in entries_lower
+    
+    
+    def get_original_entry_name(self, comparing_entry):
+        """Return original entry name if the given entry matches it case-insensitively
+        If no such match, return None
+        """
+        entries = self.list_all_entries()
+        for entry in entries:
+            if comparing_entry.lower() == entry.lower():
+                return entry
+        return None

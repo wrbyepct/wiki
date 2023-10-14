@@ -5,9 +5,39 @@
 {% endblock %}
 
 {% block body %}
-    <form  method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit" name="original_title" value="{{ title }}">Save Changes</button>
-    </form>
+    {% if messages %}
+        <div class="message"> 
+            {% for message in messages %}
+                <span {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    
+    <div class="form-container">
+        <form class="entry-form" method="post">
+            {% csrf_token %}
+            
+            <div class="field field__title">
+                {{ form.title }}
+            </div>
+
+            <div class="field field__content">
+                {{ form.content }}
+            </div>
+            
+            <div class="btn-container">
+                <button 
+                    class="form-btn form-btn--normal" 
+                    type="submit" 
+                    name="original_title" 
+                    value="{{ title }}"
+                >
+                    Save Changes
+                    </button>
+            </div>
+        </form>
+    </div>
+    
+    
 {% endblock %}
