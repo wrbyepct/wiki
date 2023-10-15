@@ -7,13 +7,21 @@ const applyTheme = () => {
 
     const themeBody = document.getElementById('theme');
 
+    console.log(`Setting theme: ${theme}`);
+
+   
     if (!theme) {
         theme = 'day';
     }
-
+    
     if (themeBody) {
-        console.log(`setting theme ${theme}`)
-        themeBody.classList.add(theme)
+
+        try {
+            themeBody.classList.add(theme)
+        } catch (error) {
+            console.error(error)
+        }
+        
     } else {
         console.error(`No such class ${themeBody} found`);
     }
@@ -43,8 +51,6 @@ const toggleTheme = () => {
     }
 
 }
-
-
 
 
 // Add start-transition after page loaded 

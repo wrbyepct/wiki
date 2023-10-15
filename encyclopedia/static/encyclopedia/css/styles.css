@@ -64,138 +64,91 @@ h1 {
 /* Toggle btn color */
 /* Night theme */
 /* Day theme */
-/* Globals */
-/* Toggle btn color */
-/* Night theme */
-/* Day theme */
-body.night {
-  background: #383838;
-}
-body.night .sidebar {
-  background-color: #202020;
-  color: rgba(233, 233, 233, 0.818);
-}
-body.night .sidebar .search-field {
-  background: inherit;
-  font-size: 0.875rem;
-  color: white;
-  border: none;
-  border-bottom: 1px solid rgba(183, 178, 178, 0.915);
-  caret-color: white;
-}
-body.night .sidebar .nav-entry-box {
-  color: rgba(251, 251, 251, 0.807);
-}
-body.night .sidebar .nav-entry-box .nav-entry:hover {
-  color: rgb(238, 196, 113);
-}
-body.night .main {
-  background: inherit;
-  color: rgba(233, 233, 233, 0.818);
-}
-body.night .main h1, body.night .main .entry-title {
-  color: inherit;
-}
-body.night .main a {
-  color: rgb(238, 196, 113);
-}
-body.night .main a:hover {
-  color: #856404;
-}
-body.night .main .entry-title {
-  color: rgb(238, 196, 113);
-}
-body.night .main .entry-title:hover {
-  color: teal;
-}
-body.night .main .form-btn {
-  background: #202020;
-}
-body.night .main .form-btn--normal {
-  color: teal;
-}
-body.night .main .form-btn--danger {
-  color: rgb(255, 79, 79);
-}
-body.night .main .entry-form .field input {
-  background: inherit;
-  color: inherit;
-}
-body.night .main .entry-form .field textarea {
-  color: inherit;
-  background: rgba(49, 49, 49, 0.6941176471);
-}
-
-/* Globals */
-/* Toggle btn color */
-/* Night theme */
-/* Day theme */
 body.day {
-  background: #f0f0f0;
-}
-body.day .sidebar {
-  background-color: #d9d9d9;
-  color: rgba(33, 33, 33, 0.818);
-}
-body.day .sidebar .search-field {
-  background: inherit;
-  font-size: 0.875rem;
-  color: white;
-  border: none;
-  border-bottom: 1px solid rgba(117, 112, 112, 0.915);
-  caret-color: black;
-}
-body.day .sidebar .nav-entry-box {
-  color: rgba(50, 50, 50, 0.807);
-}
-body.day .sidebar .nav-entry-box .nav-entry:hover {
-  color: rgb(41, 156, 121);
-}
-body.day .main {
-  background: inherit;
-  color: rgba(33, 33, 33, 0.818);
-}
-body.day .main h1, body.day .main .entry-title {
-  color: inherit;
-}
-body.day .main a {
-  color: rgb(51, 165, 226);
-}
-body.day .main a:hover {
-  color: rgb(16, 125, 184);
-}
-body.day .main .entry-title:hover {
-  color: rgb(51, 165, 226);
-}
-body.day .main .form-btn {
-  background: #f0f0f0;
-}
-body.day .main .form-btn--normal {
-  color: rgb(51, 165, 226);
-}
-body.day .main .form-btn--danger {
-  color: rgb(255, 79, 79);
-}
-body.day .main .entry-form .field input {
-  background: inherit;
-  color: inherit;
-}
-body.day .main .entry-form .field textarea {
-  color: inherit;
-  background: #e6e6e6;
+  /* Toggle */
+  --toggle-wrapper-bg: white;
+  --toggle-wrapper-border: #E4E7EC;
+  --toggle-switch-bg: #FFECCF;
+  --toggle-switch-border: #FFBB52;
+  --toggle-switch-position: 15px;
+  --sun-opacity: 1;
+  --sun-transform: rotate(90deg);
+  --moon-opacity: 0;
+  --moon-transform: rotate(45deg);
+  /* Nav */
+  --sidebar-bg: #d9d9d9;
+  --search-field-border-bottom: rgba(117, 112, 112, 0.915);
+  --caret-color: black;
+  --nav-box-entry: rgba(50, 50, 50, 0.807);
+  --nav-entry-hover: rgb(41, 156, 121);
+  /* Main */
+  --main-body-bg: #f0f0f0;
+  --main-font-color: rgba(33, 33, 33, 0.818);
+  --form-link-color: rgb(51, 165, 226);
+  --form-link-color-hover: rgb(16, 125, 184);
+  --entry-title-color-hover: rgb(51, 165, 226);
+  /* From */
+  --form-btn-bg: #f0f0f0;
+  --form-btn-normal: rgb(51, 165, 226);
+  --from-btn-danger: rgb(255, 79, 79);
+  --textarea-color: #e6e6e6be;
 }
 
-/* Globals */
-/* Toggle btn color */
-/* Night theme */
-/* Day theme */
-ion-icon {
+body.night {
+  /* Toggle */
+  --toggle-wrapper-bg: #374151;
+  --toggle-wrapper-border: #485365;
+  --toggle-switch-bg: #485365;
+  --toggle-switch-border: white;
+  --toggle-switch-position: 47px;
+  --sun-opacity: 0;
+  --sun-transform: translateX(5px);
+  --moon-opacity: 1;
+  --moon-transform: rotate(0deg);
+  /* Nav */
+  --sidebar-bg: #202020;
+  --search-field-border-bottom: rgba(183, 178, 178, 0.915);
+  --caret-color: white;
+  --nav-box-entry: rgba(251, 251, 251, 0.807);
+  --nav-entry-hover: rgb(238, 196, 113);
+  /* Main */
+  --main-body-bg: #383838;
+  --main-font-color: rgba(233, 233, 233, 0.818);
+  --form-link-color: rgb(238, 196, 113);
+  --form-link-color-hover: #856404;
+  --entry-title-color-hover: teal;
+  /* From */
+  --form-btn-bg: #202020;
+  --form-btn-normal: teal;
+  --from-btn-danger: rgb(188, 5, 5);
+  --textarea-color: #313131b1;
+}
+
+body {
+  background: var(--main-body-bg);
+  color: var(--main-font-color);
+}
+body .sidebar {
+  background-color: var(--sidebar-bg);
+  color: var(--font-color);
+  padding-right: 0.25rem;
+  z-index: 10;
+}
+body .sidebar .nav-container {
+  padding: 1rem 0.75rem 1rem 0.75rem;
+}
+body .sidebar .nav-container .toggle-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+body .sidebar .nav-container .toggle-btn-container ion-icon {
   --ionicon-stroke-width: 40px;
   font-size: 28px;
-  transition: transform 0.6s cubic-bezier(0.66, -0.64, 0.33, 1.5), opacity 0.4s linear, color 0.4s linear;
+  transition: transform 0.6s cubic-bezier(0.66, -0.64, 0.33, 1.5);
 }
-
-body .toggle-wrapper {
+body .sidebar .nav-container .toggle-btn-container .toggle-wrapper {
+  background-color: var(--toggle-wrapper-bg);
+  border: solid 3px var(--toggle-wrapper-border);
   width: 80px;
   height: 30px;
   padding: 0px 15px;
@@ -207,75 +160,31 @@ body .toggle-wrapper {
   box-shadow: rgba(0, 0, 0, 0.1) -2px 15px 25px -5px;
   position: relative;
 }
-body .toggle-wrapper:before {
+body .sidebar .nav-container .toggle-btn-container .toggle-wrapper:before {
+  right: var(--toggle-switch-position);
+  background-color: var(--toggle-switch-bg);
+  border: solid 4px var(--toggle-switch-border);
   content: "";
   position: absolute;
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  transition: right 0.6s cubic-bezier(0.84, -0.89, 0.05, 1.97), backgroundColor 0.2s linear, border 0.2s linear;
+  transition: right 0.6s cubic-bezier(0.84, -0.89, 0.05, 1.97), backgroundColor 0.2s linear;
   z-index: 10;
 }
-body .planet {
+body .sidebar .nav-container .toggle-btn-container .sun {
+  color: #FFBB52;
+  opacity: var(--sun-opacity);
+  transform: var(--sun-transform);
+}
+body .sidebar .nav-container .toggle-btn-container .moon {
+  color: white;
+  opacity: var(--moon-opacity);
+  transform: var(--moon-transform);
+}
+body .sidebar .nav-container .toggle-btn-container .planet {
   width: 1rem;
   height: 1rem;
-}
-
-body.day .toggle-wrapper {
-  background-color: white;
-  border: solid 3px #E4E7EC;
-}
-body.day .toggle-wrapper:before {
-  right: 15px;
-  background-color: #FFECCF;
-  border: solid 4px #FFBB52;
-}
-body.day .sun {
-  color: #FFBB52;
-  transform: rotate(90deg);
-}
-body.day .moon {
-  opacity: 0;
-  transform: rotate(45deg);
-}
-
-body.night .toggle-wrapper {
-  background-color: #374151;
-  border: solid 3px #485365;
-}
-body.night .toggle-wrapper:before {
-  right: 47px;
-  background-color: #485365;
-  border: solid 4px white;
-}
-body.night .sun {
-  opacity: 0;
-  transform: rotate(0deg) translateX(5px);
-}
-body.night .moon {
-  opacity: 1;
-  color: white;
-  transform: rotate(0deg);
-}
-
-body.day {
-  --background: italic;
-}
-
-body.night {
-  --background: bold;
-}
-
-body .sidebar {
-  padding-right: 0.25rem;
-  z-index: 10;
-}
-body .sidebar .nav-container {
-  padding: 1rem 0.75rem 1rem 0.75rem;
-}
-body .sidebar .nav-container .toggle-btn-container {
-  display: flex;
-  justify-content: flex-end;
 }
 body .sidebar .nav-container h2 {
   font-weight: 700;
@@ -283,11 +192,14 @@ body .sidebar .nav-container h2 {
   margin-top: 5px;
 }
 body .sidebar .nav-container .search-field {
+  background: inherit;
   color: inherit;
   font-size: 0.875rem;
-  background: inherit;
   width: 100%;
   padding: 0.125rem 0 0.125rem 0.25rem;
+  border: none;
+  border-bottom: 1px solid rgba(117, 112, 112, 0.915);
+  caret-color: var(--caret-color);
 }
 body .sidebar .nav-container .search-field::-moz-placeholder {
   font-style: italic;
@@ -296,6 +208,7 @@ body .sidebar .nav-container .search-field::placeholder {
   font-style: italic;
 }
 body .sidebar .nav-container .nav-entry-box {
+  color: var(--nav-box-entry);
   margin-top: 1.5rem;
   font-size: 1.25rem;
 }
@@ -305,6 +218,7 @@ body .sidebar .nav-container .nav-entry-box .nav-entry {
   width: fit-content;
 }
 body .sidebar .nav-container .nav-entry-box .nav-entry:hover {
+  color: var(--nav-entry-hover);
   cursor: pointer;
   transform: scale(1.05);
 }
@@ -318,6 +232,10 @@ body .main {
 }
 body .main .entry-body-container a {
   font-weight: bold;
+  color: var(--form-link-color);
+}
+body .main .entry-body-container a:hover {
+  color: var(--form-link-color-hover);
 }
 body .main .entry-list-container {
   display: flex;
@@ -334,6 +252,7 @@ body .main .entry-list-container .entry-title a {
   text-decoration: none;
 }
 body .main .entry-list-container .entry-title:hover {
+  color: var(--entry-title-color-hover);
   font-weight: bold;
   transform: translateX(-10px);
 }
@@ -344,6 +263,8 @@ body .main .form-container .field {
   margin-bottom: 0.5rem;
 }
 body .main .form-container .field__title input {
+  background: inherit;
+  color: inherit;
   font-size: 2rem;
   width: calc(100% - 15rem);
   border: none;
@@ -356,6 +277,8 @@ body .main .form-container .field__title input::placeholder {
   font-style: italic;
 }
 body .main .form-container .field__content textarea {
+  color: inherit;
+  background: var(--textarea-color);
   height: 80vh;
   width: 90%;
   padding: 1rem;
@@ -365,23 +288,26 @@ body .main .btn-container--entry {
   text-align: end;
 }
 body .main .btn-container .form-btn {
+  background: var(--form-btn-bg);
   font-weight: bold;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
 }
+body .main .btn-container .form-btn--normal {
+  color: var(--form-btn-normal);
+}
 body .main .btn-container .form-btn--normal:hover {
   background-color: rgb(51, 165, 226);
-  font-weight: 700;
   color: rgb(252, 252, 252);
   border-color: rgb(16, 125, 184);
 }
 body .main .btn-container .form-btn--danger {
+  color: var(--from-btn-danger);
   margin-left: 1rem;
 }
 body .main .btn-container .form-btn--danger:hover {
   background-color: rgb(255, 79, 79);
-  font-weight: 700;
   color: rgb(252, 252, 252);
   border-color: rgb(16, 125, 184);
 }

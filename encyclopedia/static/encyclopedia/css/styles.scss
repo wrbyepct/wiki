@@ -1,37 +1,19 @@
 @import "globals";
 @import "variables";
-@import "night_theme";
-@import "day_theme";
-@import "toggle_btn";
+@import "themes";
 
-// body.day {
-    
-// }
-
-body.night {
-    @extend %theme-night;
-    @extend %toggle-night;
-}
-
-body.day {
-    @extend %theme-day;
-    @extend %toggle-day
-}
-
-body.day {
-    --background: italic;
-}
-
-body.night {
-    --background: bold;
-}
 
 // main body 
 body {
+
+    background: var(--main-body-bg);
+    color: var(--main-font-color);
    
     // Nav style
     .sidebar {
-    
+        background-color: var(--sidebar-bg);
+        color: var(--font-color);
+
         padding-right: 0.25rem;
 
         z-index: 10;
@@ -39,10 +21,83 @@ body {
         .nav-container {
 
             padding: 1rem 0.75rem 1rem 0.75rem;
-
+       
             .toggle-btn-container {
+
                 display: flex;
                 justify-content: flex-end;
+
+                ion-icon {
+                    --ionicon-stroke-width: 40px;
+                    font-size: 28px;
+                    transition: transform 0.6s cubic-bezier(.66,-0.64,.33,1.5)
+                }
+
+                .toggle-wrapper {
+
+                    // theme
+                    background-color: var(--toggle-wrapper-bg);
+                    border: solid 3px var(--toggle-wrapper-border);
+
+                    width: 80px;
+                    height: 30px;
+                
+                    padding: 0px 15px;
+                
+                    border-radius: 25px;
+                   
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                
+                    cursor: pointer;
+                    box-shadow: rgba(0, 0, 0, 0.1) -2px 15px 25px -5px;
+                
+                    position: relative;
+                    
+                }
+                  
+                // Switch
+                .toggle-wrapper:before {
+
+                    // theme
+                    right: var(--toggle-switch-position);
+                    background-color: var(--toggle-switch-bg);
+                    border: solid 4px var(--toggle-switch-border);
+
+                    content: '';
+                    position: absolute;
+                
+                    width: 1rem;
+                    height: 1rem;
+                
+                    border-radius: 50%;
+                
+                    transition: right 0.6s cubic-bezier(.84,-0.89,.05,1.97), backgroundColor 0.2s linear;
+                
+                    z-index: 10;
+                }
+                
+                .sun {
+                    // theme 
+                    color: #FFBB52;
+                    opacity: var(--sun-opacity);
+                    transform: var(--sun-transform);
+                }
+            
+                .moon {
+
+                    // theme 
+                    color: white;
+                    opacity: var(--moon-opacity);
+                    transform: var(--moon-transform);
+                }
+
+                
+                .planet {
+                    width: 1rem;
+                    height: 1rem;
+                }
             }
 
             h2 {
@@ -55,14 +110,18 @@ body {
         
             .search-field {
         
+                background: inherit;
+
                 color: inherit;
                 font-size: 0.875rem; 
-        
-                background: inherit;
         
                 width: 100%;
         
                 padding: 0.125rem 0 0.125rem 0.25rem;
+
+                border: none;
+                border-bottom: 1px solid $border-bottom-color-day;
+                caret-color: var(--caret-color);
                 
                 &::placeholder {
         
@@ -72,6 +131,9 @@ body {
             }
 
             .nav-entry-box {
+
+                color: var(--nav-box-entry);
+
                 margin-top: 1.5rem;
                 font-size: 1.25rem;
         
@@ -80,6 +142,8 @@ body {
                     width: fit-content;
                     
                     &:hover {
+                        color: var(--nav-entry-hover);
+
                         cursor: pointer;
                         transform: scale(1.05);
                     }
@@ -102,13 +166,20 @@ body {
         .entry-body-container {
             // For all links in form content 
             a {
-        
+                
                 font-weight: bold;
+
+                color: var(--form-link-color);
+
+                &:hover {
+                    color: var(--form-link-color-hover);
+                }
             }
         }
 
         // Entry list
         .entry-list-container {
+
             display: flex;
             flex-direction: column;
 
@@ -124,6 +195,8 @@ body {
                 }
                     
                 &:hover {
+                    color: var(--entry-title-color-hover);
+
                     font-weight: bold;
                     transform: translateX(-10px);
                 }
@@ -136,8 +209,6 @@ body {
 
             margin-top: 1rem;
 
-            
-
             .field {
 
                 margin-bottom: 0.5rem;
@@ -145,6 +216,10 @@ body {
                 &__title {
 
                     input {
+                        
+                        background: inherit;
+                        color: inherit;
+
                         font-size: 2rem;
                         width: calc(100% - 15rem);
                         border: none;
@@ -158,6 +233,9 @@ body {
                 &__content {
 
                     textarea {
+                        color: inherit;
+                        background: var(--textarea-color);
+
                         height: 80vh;
                         width: 90%;
 
@@ -177,6 +255,8 @@ body {
 
             .form-btn {
 
+                background: var(--form-btn-bg);
+
                 font-weight: bold;
 
                 padding: 0.5rem 1rem;
@@ -186,11 +266,12 @@ body {
     
                 &--normal {
 
+                    color: var(--form-btn-normal);
+
                     &:hover {
                 
                         background-color: $blue-1;
     
-                        font-weight: 700;
                         color: rgb(252, 252, 252);
 
                         border-color: $blue-2;
@@ -200,13 +281,14 @@ body {
     
                 &--danger {
 
+                    color: var(--from-btn-danger);
+
                     margin-left: 1rem;
 
                     &:hover {
             
                         background-color: $red-1;
-    
-                        font-weight: 700;
+                        
                         color: rgb(252, 252, 252);
 
                         border-color: $blue-2;
@@ -224,19 +306,3 @@ body {
     }
     
 }
-
-
-
-
-
-
-
-// Entry page style 
-
-
-
-
-
-
-
-
