@@ -1,0 +1,242 @@
+@import "globals";
+@import "variables";
+@import "night_theme";
+@import "day_theme";
+@import "toggle_btn";
+
+// body.day {
+    
+// }
+
+body.night {
+    @extend %theme-night;
+    @extend %toggle-night;
+}
+
+body.day {
+    @extend %theme-day;
+    @extend %toggle-day
+}
+
+body.day {
+    --background: italic;
+}
+
+body.night {
+    --background: bold;
+}
+
+// main body 
+body {
+   
+    // Nav style
+    .sidebar {
+    
+        padding-right: 0.25rem;
+
+        z-index: 10;
+
+        .nav-container {
+
+            padding: 1rem 0.75rem 1rem 0.75rem;
+
+            .toggle-btn-container {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            h2 {
+            
+                font-weight: 700;
+                font-size: 3rem;
+        
+                margin-top: 5px;
+            }
+        
+            .search-field {
+        
+                color: inherit;
+                font-size: 0.875rem; 
+        
+                background: inherit;
+        
+                width: 100%;
+        
+                padding: 0.125rem 0 0.125rem 0.25rem;
+                
+                &::placeholder {
+        
+                    font-style: italic;
+                }
+        
+            }
+
+            .nav-entry-box {
+                margin-top: 1.5rem;
+                font-size: 1.25rem;
+        
+                .nav-entry {
+                    margin-bottom: 0.5rem;
+                    width: fit-content;
+                    
+                    &:hover {
+                        cursor: pointer;
+                        transform: scale(1.05);
+                    }
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                    
+                }
+            }
+        } 
+    } 
+
+
+    .main {
+
+        padding: 0.8rem 2rem;
+        height: 100%;
+        
+        .entry-body-container {
+            // For all links in form content 
+            a {
+        
+                font-weight: bold;
+            }
+        }
+
+        // Entry list
+        .entry-list-container {
+            display: flex;
+            flex-direction: column;
+
+            .entry-title {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+        
+                width: fit-content;
+        
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                }
+                    
+                &:hover {
+                    font-weight: bold;
+                    transform: translateX(-10px);
+                }
+                
+            }
+        }
+    
+        // Form 
+        .form-container {
+
+            margin-top: 1rem;
+
+            
+
+            .field {
+
+                margin-bottom: 0.5rem;
+
+                &__title {
+
+                    input {
+                        font-size: 2rem;
+                        width: calc(100% - 15rem);
+                        border: none;
+                        border-bottom: 1px solid $border-bottom-color;
+                        &::placeholder {
+                            font-style: italic;
+                        }
+                    }
+                }
+                
+                &__content {
+
+                    textarea {
+                        height: 80vh;
+                        width: 90%;
+
+                        padding: 1rem;
+                        border-radius: 15px;
+                    }
+                }
+            }
+        }
+
+         // Edit & delete btn of an entry
+        .btn-container {
+
+            &--entry {
+                text-align: end;
+            }
+
+            .form-btn {
+
+                font-weight: bold;
+
+                padding: 0.5rem 1rem;
+                
+                border: none;
+                border-radius: 5px;
+    
+                &--normal {
+
+                    &:hover {
+                
+                        background-color: $blue-1;
+    
+                        font-weight: 700;
+                        color: rgb(252, 252, 252);
+
+                        border-color: $blue-2;
+                        
+                    }
+                }
+    
+                &--danger {
+
+                    margin-left: 1rem;
+
+                    &:hover {
+            
+                        background-color: $red-1;
+    
+                        font-weight: 700;
+                        color: rgb(252, 252, 252);
+
+                        border-color: $blue-2;
+                        
+                    }
+                }
+                
+            }
+        }
+    
+        .no-results-message {
+
+            font-size: 2rem
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+// Entry page style 
+
+
+
+
+
+
+
+

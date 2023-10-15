@@ -1,0 +1,76 @@
+
+/* Globals */
+// btn background
+$blue-1:rgb(51, 165, 226);
+$red-1: rgb(255, 79, 79);
+
+// Border 
+$blue-2: rgb(16, 125, 184);
+$red-2: rgb(188, 5, 5);
+
+// Border bottom
+$border-bottom-color: rgba(79, 79, 79, 0.5);
+
+/* Toggle btn color */
+$sun-color: #FFBB52;
+$moon-color: white;
+
+$toggle-wrapper-bg-day: white;
+$toggle-wrapper-border-day: #E4E7EC;
+
+$toggle-switch-bg-day: #FFECCF;
+$toggle-switch-border-day: #FFBB52;
+
+
+
+$toggle-wrapper-bg-night: #374151;
+$toggle-wrapper-border-night: #485365;
+
+$toggle-switch-bg-night: #485365;
+$toggle-switch-border-night: white;
+
+
+
+
+/* Night theme */
+// Background
+$background-night-dark-1: #383838;
+$background-night-dark-2: #313131b1;
+$background-night-dark-3: #202020;
+
+// Font color 
+$teal-1: teal;
+
+// Navbar 
+
+$font-color-night: rgba(233, 233, 233, 0.818);
+
+$border-bottom-color-night: rgba(183, 178, 178, 0.915);
+
+$nav-box-entry-color-night: rgba(251, 251, 251, 0.807);
+
+// link 
+$brown-yellow-1: rgb(238, 196, 113);
+$brown-yellow-2: #856404;
+
+
+
+
+/* Day theme */
+// Background
+$background-day-light-3: #f0f0f0;  // Lighter shade for main backgrounds.
+$background-day-light-1: #d9d9d9;  // Intermediate shade for secondary backgrounds.
+$background-day-light-2: #e6e6e6;  // Semi-transparent shade, mirroring your night theme's semi-transparency.
+
+// Font color 
+// Use blue-1
+
+// Navbar
+$font-color-day: rgba(33, 33, 33, 0.818);  // Dark text for contrast against lighter backgrounds.
+
+$border-bottom-color-day: rgba(117, 112, 112, 0.915);  // Slightly darker border for contrast.
+
+$nav-box-entry-color-day: rgba(50, 50, 50, 0.807);  // Darker text for the navigation box entries.
+$teal-2-day-hover: rgb(41, 156, 121);
+// link 
+// Use blue-1 and 2

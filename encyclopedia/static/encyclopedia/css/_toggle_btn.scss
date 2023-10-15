@@ -1,0 +1,122 @@
+@import "variables";
+
+ion-icon {
+    --ionicon-stroke-width: 40px;
+    font-size: 28px;
+    transition: transform 0.6s cubic-bezier(.66,-0.64,.33,1.5), opacity 0.4s linear, color 0.4s linear;
+}
+
+
+
+body {
+    
+    .toggle-wrapper {
+        width: 80px;
+        height: 30px;
+    
+        padding: 0px 15px;
+    
+       
+        border-radius: 25px;
+       
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.1) -2px 15px 25px -5px;
+    
+        position: relative;
+        
+    }
+      
+    // Switch
+    .toggle-wrapper:before {
+        content: '';
+        position: absolute;
+    
+        width: 1rem;
+        height: 1rem;
+    
+        border-radius: 50%;
+    
+        transition: right 0.6s cubic-bezier(.84,-0.89,.05,1.97), backgroundColor 0.2s linear, border 0.2s linear;
+    
+        z-index: 10;
+    }
+    
+    
+    .planet {
+        width: 1rem;
+        height: 1rem;
+    }
+    
+}
+  
+
+
+
+%toggle-day  {
+
+    .toggle-wrapper {
+        background-color: $toggle-wrapper-bg-day;
+    
+        border: solid 3px $toggle-wrapper-border-day;
+
+    }
+
+    .toggle-wrapper:before {
+
+        right: 15px;
+    
+        background-color: $toggle-switch-bg-day;
+    
+        border: solid 4px $toggle-switch-border-day;
+    }
+
+    .sun {
+
+        color: #FFBB52;
+        transform: rotate(90deg);
+    }
+
+    .moon {
+        opacity: 0;
+        transform: rotate(45deg);
+    }
+    
+}
+
+  
+%toggle-night {
+
+    .toggle-wrapper {
+        background-color: $toggle-wrapper-bg-night;
+    
+        border: solid 3px $toggle-wrapper-border-night;
+    }
+
+    .toggle-wrapper:before {
+
+        right: 47px;
+    
+        background-color: $toggle-switch-bg-night;
+    
+        border: solid 4px $toggle-switch-border-night;
+    }    
+
+    .sun {
+        opacity: 0;
+        transform: rotate(0deg) translateX(5px)
+    }
+
+    .moon {
+        opacity: 1;
+        color: $moon-color;
+        transform: rotate(0deg);
+    }
+
+}
+
+
+
