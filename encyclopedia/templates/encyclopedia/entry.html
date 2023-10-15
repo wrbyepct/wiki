@@ -9,11 +9,24 @@
     
     <div class="entry-container" >
 
-        <div class="entry-btn-container">
+        <div class="btn-container btn-container--entry">
             <form method="post">
                 {% csrf_token %}
-                <button class="form-btn form-btn--normal" name="edit">Edit</button>
-                <button class="form-btn form-btn--danger" id="deleteEntry" name="delete">Delete</button>
+                <button 
+                    class="form-btn form-btn--normal" 
+                    name="edit" 
+                    aria-label="transition-btn"
+                >
+                    Edit
+                </button>
+                <button 
+                    class="form-btn form-btn--danger" 
+                    id="deleteEntry" 
+                    name="delete" 
+                    aria-label="transition-btn"
+                >
+                    Delete
+                 </button>
             </form>    
         </div>
         

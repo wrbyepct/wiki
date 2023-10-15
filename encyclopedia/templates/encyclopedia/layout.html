@@ -9,11 +9,19 @@
         <link href="{% static 'encyclopedia/css/styles.css' %}" rel="stylesheet">
         <script src="{% static 'encyclopedia/js/script.js' %}" defer></script>
     </head>
-    <body>
+    <body id="theme" class="">
         <div class="row stretch">
             <div class="sidebar col-lg-2 col-md-3">
                 <div class="nav-container">
-                    <h2>Wiki</h2>
+
+                    <div class="toggle-btn-container">
+                        <div class="toggle-wrapper">
+                            <ion-icon name="sunny-outline" class="planet sun"></ion-icon>
+                            <ion-icon name="moon-outline" class="planet moon"></ion-icon>
+                        </div>
+                    </div>
+
+                    <h2 id="wiki">Wiki</h2>
                     <form action="{% url 'results' %}">
                         <input class="search-field" type="text" name="q" placeholder="Search Encyclopedia">
                     </form>
@@ -51,9 +59,10 @@
                 </div>
                 
             </div>
-            
                 
         </div>
 
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>

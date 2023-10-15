@@ -1,14 +1,73 @@
-window.document.addEventListener("DOMContentLoaded", () => {
+// Initialize local storage theme 
 
-     // Add start-transition after page loaded 
-     const elements = document.querySelectorAll('[aria-label="transition-btn"]');
-     elements.forEach((el) => {
-        el.classList.add('start-transition');
-        console.log(`add ${el} for start transition`)
-     })
+
+const applyTheme = () => {
+
+    let theme = localStorage.getItem('theme');
+
+    const themeBody = document.getElementById('theme');
+
+    if (!theme) {
+        theme = 'day';
+    }
+
+    if (themeBody) {
+        console.log(`setting theme ${theme}`)
+        themeBody.classList.add(theme)
+    } else {
+        console.error(`No such class ${themeBody} found`);
+    }
+
+}
+
+
+// Toggle theme logic
+const toggleTheme = () => {
+
+    const toggle = document.querySelector('.toggle-wrapper');
+    const themeBody = document.getElementById('theme');
+
+    if (toggle && themeBody) {
+        toggle.addEventListener('click', () => {
+
+            themeBody.classList.toggle('night');
+            themeBody.classList.toggle('day');
+
+            const theme = themeBody.classList.value;
+     
+            localStorage.setItem('theme', theme);
+        })
+
+    } else {
+        console.error("Now toggle button found");
+    }
+
+}
+
+
+
+
+// Add start-transition after page loaded 
+const applyTransitionEffect = () => {
     
+    const elements = document.querySelectorAll('[aria-label="transition-btn"]');
 
-    // Page entry deletion confirmation button
+    if (elements) {
+        elements.forEach((el) => {
+            el.classList.add('start-transition');
+            console.log(`add ${el} for start transition`)
+         })
+    } else {
+
+        console.error("No transition button found.")
+    }
+
+}
+
+
+// Page entry deletion confirmation button
+const confirmDeleteEntry = () => {
+
     const deleteBtn = document.getElementById("deleteEntry");
 
     if (deleteBtn) {
@@ -21,21 +80,42 @@ window.document.addEventListener("DOMContentLoaded", () => {
         console.error("Element with ID 'deleteEntry' was not found.");
     }
 
-    // Add ease out transition to alert message 
+}
+
+
+const removeAlertMessage = () => {
+
+   
     const message = document.getElementById('alertMessage')
-    console.log(message)
+  
     if (message) {
+        console.log("removal of alert message called, setting timeout...")
+        // Add display none to not occupy the space
         setTimeout(() => {
             message.classList.add('out');
-            message.style.maxHeight = '0'
-
-            // Add display none to not occupy the space
-            setTimeout(() => {
-                message.style.display = 'none';
-                
-            }, 400)
-            
         }, 2000)
+        
+        setTimeout(() => {
+            message.remove()
+        }, 2700)
+        
+    } else {
+        console.error('No "alertMessage" class found')
     }
+
+}
+
+
+applyTheme();
+document.addEventListener("DOMContentLoaded", () => {
+
+    
+    applyTransitionEffect();
+    
+    toggleTheme();
+    
+    confirmDeleteEntry();
+
+    removeAlertMessage();
 
 })
