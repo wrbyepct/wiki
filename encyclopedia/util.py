@@ -65,6 +65,9 @@ def delete_entry(title):
     filename = f"entries/{title}.md"
     if default_storage.exists(filename):
         default_storage.delete(filename)
+        return {"status": "success"}
+    
+    return {"status": "failed", "message": f"No such file in default storage: {filename}. Old file deletion failed."}
 
 
 def filter_substr(str_list, substr):

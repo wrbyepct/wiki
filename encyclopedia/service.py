@@ -1,12 +1,13 @@
 
-from .dao import EntryDao
+from http import HTTPStatus
+from .dao import DataDao, EntryDao
 from . import util
 
 
 class EntryService:
-    def __init__(self, dao=None):
+    def __init__(self, dao: DataDao=None):
         self.dao = dao or EntryDao
-    
+        
     
     def list_all_entries(self, query="", filter_substr=False):
         entries = self.dao.fetch_all_entries()
@@ -22,23 +23,28 @@ class EntryService:
         
         entries = [entry.lower() for entry in self.list_all_entries()]
         
+        # If no such entry, return not found
         if entry.lower() not in entries:
-            return None, 404
+            return None, HTTPStatus.NOT_FOUND
         
         content = self.dao.fetch_entry(entry, include_title)
         
+        # If there is problem reading files
         if content is None:
-            return None, 505
+            return None, HTTPStatus.INTERNAL_SERVER_ERROR
         
-        return content, 200
+        return content, HTTPStatus.OK
     
    
     def save_entry(self, entry, content, old_entry=None):
         
-        if old_entry and (entry != old_entry):
-            self.dao.delete_entry(old_entry)
+        if old_entry:
+            result = self.dao.delete_entry(old_entry)
+            if result["status"] != "success":
+                return result
                 
         self.dao.save_entry(entry, content)
+        return {"status": "success"}
     
     def delete_entry(self, entry):
         self.dao.delete_entry(entry)

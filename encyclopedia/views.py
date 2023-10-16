@@ -5,8 +5,9 @@ from .request_handlers import (
     ResultRequestHandler, 
     NewPageRequestHandler, 
     EditRequestHandler,
-    RandomPageRequestHandler
+    RandomPageRequestHandler,
 )
+
 from .form import EntryForm
 from django.shortcuts import render 
 from .constant import ERROR_TEMPLATE
@@ -97,8 +98,6 @@ def render_random(request):
 
 
 def render_foobar(request, foo, bar):
-    print(foo)
-    print(bar)
     print(request.GET)
     return render(request, ERROR_TEMPLATE, 
-                  {"status_code": 777, "message": "glad you found it"})
+                  {"status_code": "CS50W", "message": "This is prject 1 wiki!"})

@@ -35,7 +35,7 @@ class EntryDao(DataDao):
     
     @staticmethod
     def delete_entry(entry):
-        util.delete_entry(entry)
+        return util.delete_entry(entry)
         
         
 

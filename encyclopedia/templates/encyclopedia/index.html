@@ -9,12 +9,17 @@
     <h1>All Pages</h1>
 
     <ul class="entry-list-container">
-        {% for entry in entries %}
-            <li class="entry-title" aria-label="transition-btn">
-                <a  href="{% url 'entry' entry_title=entry %}">{{ entry }}</a>
-            </li>
-            
-        {% endfor %}
+        {% if entries %}
+        
+            {% for entry in entries %}
+                <li class="entry-title" aria-label="transition-btn">
+                    <a  href="{% url 'entry' entry_title=entry %}">{{ entry }}</a>
+                </li>
+            {% endfor %}
+
+        {% else  %}
+            <div class="no-results-message">No entry found.</div>
+        {% endif %}
     </ul>
     
     
