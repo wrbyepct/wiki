@@ -98,6 +98,5 @@ def render_random(request):
 
 
 def render_foobar(request, foo, bar):
-    print(request.GET)
     return render(request, ERROR_TEMPLATE, 
                   {"status_code": "CS50W", "message": "This is prject 1 wiki!"})

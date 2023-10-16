@@ -78,11 +78,12 @@ def filter_substr(str_list, substr):
 
 
 def scan_for_link_titles(content):
+    
     pattern = r"[^!]\[(\w*)\]\(.*\)"
     matches = re.findall(pattern=pattern, string=content)
     return matches
     
-
+    
 def save_all_new_entries(new_entries):
     
     for entry in new_entries:
@@ -93,7 +94,6 @@ def filter_out_existing_entries(link_entries, existings_entries):
     
     # convert to lower case for case insensitive check
     existings_entries = [e.lower() for e in existings_entries]
-    print(link_entries)
     
     new_entries = list(filter(lambda x: x.lower() not in existings_entries, link_entries))
     return new_entries

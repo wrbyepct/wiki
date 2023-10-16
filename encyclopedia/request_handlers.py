@@ -14,10 +14,12 @@ from .service import EntryService
 
 class ResponseRenderer:
     
-    def render_page(self, request, template, data: dict):
+    @staticmethod
+    def render_page(request, template, data: dict):
         return render(request, template, data)
     
-    def render_error(self, request, status_code, message):
+    @staticmethod
+    def render_error(request, status_code, message):
         return render(request, ERROR_TEMPLATE,  
                         {"status_code": status_code, 
                          "message": message})
@@ -26,7 +28,7 @@ class ResponseRenderer:
 class GetRequestHandler(ABC):
     def __init__(self, entry_service: EntryService=None, renderer: ResponseRenderer=None):
         self.entry_service = entry_service or EntryService()
-        self.renderer = renderer or ResponseRenderer()
+        self.renderer = renderer or ResponseRenderer
         
     @abstractmethod
     def handle_get(self, request):
@@ -159,7 +161,7 @@ class NewPageRequestHandler(GeneralRequestHandler):
         _ = self.entry_service.save_entry(entry=title, content=content)
         
         # And save the save the entries that's also created in content 
-        self.entry_service.save_all_new_entries(content=content)
+        self.entry_service.save_new_entries_in_content(content=content)
         
         messages.success(request, 'New entry saved!')
         return redirect(reverse('entry', args=[title]))
@@ -216,7 +218,7 @@ class EditRequestHandler(GeneralRequestHandler):
             )
             
         # And save the save the entries that's also created in content
-        self.entry_service.save_all_new_entries(content=content)     
+        self.entry_service.save_new_entries_in_content(content=content)     
        
         # Redirect to the entry page 
         messages.success(request, 'Your changes have been saved.')

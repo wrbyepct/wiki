@@ -47,7 +47,7 @@ class EntryService:
         return {"status": "success"}
     
     
-    def save_all_new_entries(self, content):
+    def save_new_entries_in_content(self, content):
         
         # Find link title in content if there is any
         link_titles = util.scan_for_link_titles(content)
