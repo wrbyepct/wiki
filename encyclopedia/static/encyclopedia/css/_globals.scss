@@ -1,10 +1,15 @@
 @import "variables";
 
+html {
+    height: 100vh;
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     font-family: monospace, Helvetica, sans-serif;
-    height: 100vh;
     background: $background-night-dark-1;
+    height: inherit;
 }
 
 

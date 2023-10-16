@@ -2,11 +2,16 @@
 /* Toggle btn color */
 /* Night theme */
 /* Day theme */
+html {
+  height: 100vh;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: monospace, Helvetica, sans-serif;
-  height: 100vh;
   background: #383838;
+  height: inherit;
 }
 
 code {
