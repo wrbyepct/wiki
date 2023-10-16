@@ -12,7 +12,6 @@ from .constant import *
 from .form import EntryForm
 from .service import EntryService
 
-    
 class ResponseRenderer:
     
     def render_page(self, request, template, data: dict):
@@ -159,6 +158,9 @@ class NewPageRequestHandler(GeneralRequestHandler):
         # And redirect to entry page
         _ = self.entry_service.save_entry(entry=title, content=content)
         
+        # And save the save the entries that's also created in content 
+        self.entry_service.save_all_new_entries(content=content)
+        
         messages.success(request, 'New entry saved!')
         return redirect(reverse('entry', args=[title]))
         
@@ -212,6 +214,9 @@ class EditRequestHandler(GeneralRequestHandler):
                 status_code=HTTPStatus.INTERNAL_SERVER_ERROR,
                 message= f"{result['message']} Saving process aborted."
             )
+            
+        # And save the save the entries that's also created in content
+        self.entry_service.save_all_new_entries(content=content)     
        
         # Redirect to the entry page 
         messages.success(request, 'Your changes have been saved.')

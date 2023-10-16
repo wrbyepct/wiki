@@ -15,6 +15,10 @@ class DataDao(ABC):
         pass
     
     @abstractmethod
+    def save_all_entries(entires):
+        pass 
+    
+    @abstractmethod
     def delete_entry(entry):
         pass
 
@@ -32,6 +36,10 @@ class EntryDao(DataDao):
     @staticmethod
     def save_entry(entry, content):
         return util.save_entry(entry, content)
+    
+    @staticmethod
+    def save_all_entries(entries):
+        return util.save_all_new_entries(new_entries=entries)
     
     @staticmethod
     def delete_entry(entry):

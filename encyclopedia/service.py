@@ -46,6 +46,23 @@ class EntryService:
         self.dao.save_entry(entry, content)
         return {"status": "success"}
     
+    
+    def save_all_new_entries(self, content):
+        
+        # Find link title in content if there is any
+        link_titles = util.scan_for_link_titles(content)
+        
+        if link_titles:
+            print(f"Link titles detected: {link_titles}")
+            existing_entries = self.list_all_entries()
+            
+            # filter out existing entries
+            new_entries = util.filter_out_existing_entries(link_entries=link_titles, existings_entries=existing_entries)
+            if new_entries:
+                print(f"New titles detected: {new_entries}")
+                self.dao.save_all_entries(new_entries)
+    
+    
     def delete_entry(self, entry):
         self.dao.delete_entry(entry)
         

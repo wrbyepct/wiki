@@ -1,5 +1,4 @@
 import re
-import os
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
@@ -30,6 +29,7 @@ def save_entry(title, content):
     filename = f"entries/{title}.md"
     if default_storage.exists(filename):
         default_storage.delete(filename)
+        
     default_storage.save(filename, ContentFile(content))
 
 
@@ -77,13 +77,27 @@ def filter_substr(str_list, substr):
     return [string for string in str_list if substr.lower() in string.lower()]
 
 
-# def save_entry(title, content):
-#     """Save the title and content as a new entry"""
-#     content_md = f"""# {title}
+def scan_for_link_titles(content):
+    pattern = r"[^!]\[(\w*)\]\(.*\)"
+    matches = re.findall(pattern=pattern, string=content)
+    return matches
     
-# {content}
-# """     
-#     with open(f"entries/{title}.md", "w", encoding="utf-8") as f:
-#         f.write(content_md)
+
+def save_all_new_entries(new_entries):
+    
+    for entry in new_entries:
+        save_entry(title=entry, content="")
+        
+
+def filter_out_existing_entries(link_entries, existings_entries):
+    
+    # convert to lower case for case insensitive check
+    existings_entries = [e.lower() for e in existings_entries]
+    print(link_entries)
+    
+    new_entries = list(filter(lambda x: x.lower() not in existings_entries, link_entries))
+    return new_entries
+    
+
 
 
